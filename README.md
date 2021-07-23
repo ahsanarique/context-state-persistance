@@ -1,6 +1,4 @@
-# Assignment 04
-
-## How do you make sure that user remains authenticated on page refresh while using Context API State Management?
+# How do you make sure that user remains authenticated on page refresh while using Context API State Management?
 
 The basic idea to persist any data in react app on page refresh is to store the data outside the app and update the states based on the stored data. The store can be either a server side database (sql or no-sql), or localStorage, sessionStorage, cookies on the client-side (browser).
 
@@ -22,9 +20,9 @@ Another thing to mention here is that, in most cases, it is not a good idea to s
 
 Also, it is not usually a good idea to solely rely on browser storages without running them through the server-side user data. Because, client-side data can be manipulated easily which can cause security issues.
 
-### Code for the above steps:
+## Code for the above steps:
 
-#### Context.js
+### Context.js
 
 ```js
 import React, { useState, useEffect } from "react";
