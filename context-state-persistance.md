@@ -38,7 +38,7 @@ const ContextProvider = ({ children }) => {
     try {
       const response = await axios.post(url, authData);
 
-      setLoginStatus(response.data) // can vary based on response is coming in what form of data
+      setLoginStatus(response.data) // can vary based on response is coming as what form of data
 
     } catch((error) => {
       console.log(error.message)
