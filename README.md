@@ -2,19 +2,19 @@
 
 The basic idea to persist any data in react app on page refresh is to store the data outside the app and update the states based on the stored data. The store can be either a server side database (sql or no-sql), or localStorage, sessionStorage, cookies on the client-side (browser).
 
-- When using context API, we can create a context provider component namely **ContextProvider** and then wrap the App component in index.js with that provider component.
+- When using context API, we can create a context provider component namely `ContextProvider` and then wrap the App component in `index.js` with that provider component.
 
-- Then, in App component, we can initiate a useEffect hook, there we can take the **auth token** and the **encrypted password** that has already been saved in the browser's storage. That saving process usually happens when a user signs up to a website.
+- Then, in App component, we can initiate a `useEffect` hook, there we can take the **auth token** and the **encrypted password** that has already been saved in the browser's storage. That saving process usually happens when a user signs up to a website.
 
-- Then, we can write a function in the ContextProvider component (authUser) that makes a http post request to the server by putting the token and password as post request data.
+- Then, we can write a function in the ContextProvider component `authUser` that makes a http post request to the server by putting the token and password as post request data.
 
-- And then, in App component, we can call that function inside useEffect hook. That will send the token and password to the server. After comparing with the data stored in the server, the server will send a response (preferably a boolean one).
+- And then, in App component, we can call that function inside `useEffect` hook. That will send the token and password to the server. After comparing with the data stored in the server, the server will send a response (preferably a boolean one).
 
-- Because we are making the API call with useEffect, every time the App component renders, it will invoke the useEffect -> authUser function. And login status will persist.
+- Because we are making the API call with `useEffect`, every time the App component renders, it will invoke the `useEffect -> authUser` function. And login status will persist.
 
-- After that, we can save the comparison value as state (loginStatus) using useState hook inside ContextProvider and update the state value inside the http post request chain we declared in ContextProvider -> authUser.
+- After that, we can save the comparison value as state `loginStatus` using useState hook inside `ContextProvider` and update the state value inside the http post request chain we declared in `ContextProvider -> authUser`.
 
-- After accomplishing the above steps, the entire React app will be able to get access to the authentication value (loginStatus) once we import it by using useContext hook inside all of our desired components that require state persistance. From there, we can use the data as intended.
+- After accomplishing the above steps, the entire React app will be able to get access to the authentication value `loginStatus` once we import it by using `useContext` hook inside all of our desired components that require state persistance. From there, we can use the data as intended.
 
 Another thing to mention here is that, in most cases, it is not a good idea to save the auth token in session storage of a browser. Because if users close the tab, the session will be cleared. In that case, users have to log in every time they close the tab. So, unless that is what the actually want to achieve, it is better to keep the token in local storage or in cookies with an expiration time.
 
